@@ -271,6 +271,6 @@ def adduser():
 
     return render_template("kylehome.html")
 
-if __name__=='__main__':
-   app.run(host="0.0.0.0" , debug="False" )
+if __name__=='__app__':
+   app.run()
 
