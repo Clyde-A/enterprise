@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color:orange;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+}
+
+.tablink:hover {
+  background-color:dodgerblue   ;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height:auto;
+}
+
+
+
+
+/* Hotfix Cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display:flex;
+  flex-wrap:wrap;
+  padding:5px ;
+  overflow:hidden;
+  border-radius:10px;
+  background-color:lightgrey;
+  color:white;
+
+}
+
+.container{
+  padding: 1px ;
+  background-color:white;
+  width:100%;
+  height:30px
+  display:inline-block;
+  text-align:center;
+  display:none;
+}
+
+
+
+.card:hover  > .container {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color:white;
+  color:red;
+  display:block;
+}
+
+
+
+#magic {
+font-size:24px;
+overflow:hidden ;
+color:dodgerblue;
+text-align:center;
+}
+
+#magic:hover {
+color:dodgerblue;
+}
+
+
+.infoma{
+
+color:white;
+text-align:center;
+}
+
+table, th, td {
+  border: 1px solid white;
+  background-color:orange;
+  padding:2px ;
+}
+
+table {
+  width: 100%;
+  background-color:#FDF5E6;
+  color:white;
+}
+
+.drag{
+background-color:#474e5d;
+text-align:center;
+float:left ;
+width:100%;
+border:3px solid orange;
+}
+
+
+
+.balance{
+color:white;
+font-size:28px;
+}
+
+
+.title{
+font-size:20px;
+color:black;
+
+}
+
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #474e5d;
+  margin-top: 20px;
+  color:orange;
+}
+
+.btmlink {
+color:orange;
+text-decoration:none;
+}
+
+.overfooter {
+border-radius:25px;
+text-align:center;
+color:whitesmoke    ;
+background-color:#474e5d;
+}
+
+#scaleout{
+height:20px ;
+width:100% ;
+color:black;
+background-color:#80ced6;
+}
+
+#scaleout2{
+height:20px ;
+width:100% ;
+color:black;
+background-color:#80ced6;
+}
+
+#scalekey{
+height:40px ;
+width:20%;
+border:2px dashed white ;
+}
+
+#scalekey2{
+height:40px ;
+width:20%;
+border:2px dashed white ;
+}
+
+.shapist{
+border-radius:10px;
+
+}
+
+.glow {
+  font-size: 30px;
+  color:tomato;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+
+
+@media only screen and (max-width:700px) {
+
+   .card{
+  flex-direction:shapist;
+  width:100%;
+  }
+
+
+
+}
+
+@media screen and (min-width : 767px) and (max-width : 2000px){
+
+ .card {
+  display:inline-block;
+
+ }
+
+ .shapist {
+ max-height:200px;
+
+}
+
+
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px red, 0 0 40px red , 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+
+.btmlink {
+color:orange;
+text-decoration:none;
+}
+
+.overfooter {
+border-radius:25px;
+text-align:center;
+color:orange;
+background-color:#474e5d;
+}
+
+#Home {background-color:#FDF5E6; text-align:center}
+#News {background-color: #FDF5E6;}
+#About {background-color:white;}
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen" >Beef</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" >Sheep</button>
+
+
+<div id="Home" class="tabcontent">
+<div class="drag" >
+<img class="resp" src="{{url_for('static' , filename="section.jpg") }}"  style="float:right; height:300px; width:50%  " >
+  <h3 class="balance"><i class="fa fa-balance-scale" style="font-size:40px;""></i> </h3>
+  <label style="color:white "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
+  </br>
+  <input id="scalekey" style=" color:white;" type="number" placeholder="Enter Desired Number Of Kilograms " oninput="weightConverter(this.value)" onchange="weightConverter(this.value)">
+</p>
+<p>Unit Price : <span id="scaleout"></span></p>
+</br>
+
+</div>
+
+ {% for product in product_name %}
+<div class="card">
+<img  class="shapist" src="{{url_for('static' , filename='images/beef/' + product)}}" style="width:100%" >
+<div class="container">
+<a href="{{url_for("order")}}"><i id="magic" class="fa fa-shopping-cart"></i></a>&nbsp &nbsp
+<a href="www.google.com"  onclick=myFunction()  ><i id="magic" class="fa fa-heart" ></i></a>&nbsp &nbsp
+<a href="{{url_for("identity")}}"><i id="magic" class="fa fa-info" ></i></a>&nbsp &nbsp
+<a href="www.google.com"><i id="magic" class="fa fa-edit" style="font-size:24px; overflow:hidden ; float:right ; color:red "></i></a>
+  </div>
+</div>
+
+{% endfor%}
+</div>
+
+<div id="News" class="tabcontent"  >
+<div class="drag">
+<h2 style="color:white" >  <b> KYLENATH SHEEP FARM </b> </h2>
+<h3 class="infoma"> <b> <i>Available Sheep Breeds </i> </b> </h3>
+
+<table>
+  <tr>
+    <th>Breed Type</th>
+    <th>Price [ AGE :  FULLY MATURE ]) </th>
+  </tr>
+  <tr>
+    <td>Uasin Gishu Docker </td>
+    <td>Red Maasai </td>
+  </tr>
+  <tr>
+    <td>{{ugdocker}}price  </td>
+    <td>{{redmasa}} price</td>
+  </tr>
+</table>
+ <h3 class="balance"><i class="fa fa-balance-scale" style="font-size:40px;""></i> </h3>
+  <label style="color:white "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
+  </br>
+  <input id="scalekey2" style=" color:white;" type="number" placeholder="Enter Desired Number Of Kilograms " oninput="weightConverter2(this.value)" onchange="weightConverter2(this.value)">
+</p>
+<p>Unit Price : <span id="scaleout2"></span></p>
+</br>
+
+</br>
+</br>
+</br>
+</div>
+
+{% for sh_product in sh_product %}
+<div class="card">
+<img class="shapist"  src="{{url_for('static' , filename='images/sheep/' + sh_product)}}" style="width:100%" >
+<div class="container">
+<a href="{{url_for("order")}}"> <i id="magic" class="fa fa-shopping-cart"></i></a> &nbsp &nbsp
+<a href="kdksd" onclick="myfunction()"  > <i id="magic" class="fa fa-heart" ></i> </a>&nbsp &nbsp
+<a href="{{url_for("identity")}}"><i id="magic" class="fa fa-info" ></i></a>&nbsp &nbsp
+<a href="derd" ><i id="magic" class="fa fa-edit" style="font-size:24px; overflow:hidden ; float:right ; color:red "> </i></a>
+
+  </div>
+</div>
+
+{% endfor%}
+</div>
+
+
+
+<div class="footer">
+<div class="overfooter">
+<p style="color:white ; font-size:20px ; text-align:center; color:orange;"  <b> <marquee> KYLENATH ENTERPRISES </marquee> </b> </p>
+<a class="btmlink" href="#pork" style="float:right; margin-right:30px ;" > Pig </a></br>
+<a class="btmlink" href="#chicken" style="float:right; margin-right:30px ;" > Chicken </a></br>
+<a class="btmlink" href="{{url_for("finisher")}}" style="float:right; margin-right:30px ;" > Beef </a></br>
+<a class="btmlink" href="{{url_for("finisher")}}" style="float:right; margin-right:30px ;" > Sheep </a></br>
+
+  <p style="text-align:center">
+  Copyright 2020  | Designed By <a href="" > G.A.S.A </a>
+  </p>
+  </div>
+</div>
+
+<script>
+function weightConverter(valNum) {
+  document.getElementById("scaleout").innerHTML=valNum*400 + "/=";
+}
+
+function weightConverter2(valNum) {
+  document.getElementById("scaleout2").innerHTML=valNum*400 + "/=";
+}
+
+
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+function myFunction() {
+  alert("CLicked")
+}
+</script>
+
+</body>
+</html>

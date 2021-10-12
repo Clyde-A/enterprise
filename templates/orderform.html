@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.buttonload {
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  width:50%;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text]  {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type=number]{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.drop{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+.police{
+color:#80ced6 ;
+text-align:center ;
+font-size:20px;
+}
+
+
+</style>
+</head>
+<body>
+
+<h2>KYLENATH ENTERPRISE ORDER PROCESSING </h2>
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="{{url_for("process")}}" method="POST">
+
+        <div class="row">
+          <div class="col-50">
+            <h3 class="police">Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i>User Name </label>
+            <input type="text" id="fname" name="xuserid" placeholder="Enter Your UserName ">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="someone@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Pickup Location</label>
+            <input type="text" id="adr" name="location" placeholder="Location">
+            <label for="city"><i class="fa fa-institution"></i> County </label>
+            <input type="text" id="city" name="county" placeholder="Enter Your County Name ">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">Phone Number </label>
+                <input type="text" id="state" name="phonecnt" placeholder="Enter A Valid Phone Number">
+              </div>
+            </div>
+             <div class="col-50">
+
+                <button class="buttonload">
+                <i class="fa fa-spinner fa-spin"></i>Pay Now
+                </button>
+
+              </div>
+          </div>
+
+          <div class="col-50">
+            <h3 class="police">Product Specification </h3>
+            <label for="fname" style="text-align:center"> Animals </label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Select Product</label>
+            <select class="drop" name="dropproduct">
+            <option class="drop"> Pig </option>
+            <option class="drop> Chicken </option>
+            <option class="drop> Sheep </option>
+            <option class="drop"> Beef </option>
+            </select>
+
+            <label for="ccnum">Quantity</label>
+            <input type="number" id="ccnum" name="quantity" placeholder="Units are Measured In Kilograms">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear"> Live Animal </label>
+                <input type="text" id="expyear" name="live" placeholder="Live Animals ">
+              </div>
+              <div class="col-50">
+                <label for="cvv">Chops (Special Cuts) </label>
+                 <select class="drop" name="chops">
+            <option class="drop"> Pig </option>
+            <option class="drop> Chicken </option>
+            <option class="drop> Sheep </option>
+            <option class="drop"> Beef </option>
+            </select>
+              </div>
+            </div>
+             <label for="expmonth">Breed </label>
+            <input type="text" id="expmonth" name="breed" placeholder="For Poultry And Pigs Only">
+
+          </div>
+
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Pay After Delivery
+        </label>
+        <input type="submit" value="Continue to checkout" class="btn">
+      </form>
+    </div>
+  </div>
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

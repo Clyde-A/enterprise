@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.topbar { 
+height:150px ;
+width:auto; 
+background-color:orange ; 
+padding:3px;
+} 
+.htab {
+text-align:center ; 
+color:white; 
+font-size:30px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.price , .admin {
+background-color:dodgerblue;
+height:100px;
+border:2px solid white ;
+width:100%;
+text-align:center ;
+color:white;
+}
+
+.sep {
+color:lightgreen;
+}
+
+.sbt{
+width:15% ;
+height:40px ;
+border:2px solid lightgreen ;
+font-size:15px;
+background-color:dodgerblue;
+color:white;
+}
+
+#myFile {
+
+background-color:dodgerblue;
+width:20% ;
+height:38px ;
+font-size:15px ;
+color:black;
+
+
+
+}
+
+</style>
+</head>
+<body>
+<div class="topbar"> 
+<h3 class="htab"> Administrator Panel </h3> 
+
+
+
+</div>
+<div class="navbar">
+  <a href="{{url_for("home")}}">Home</a>
+  <a href="{{url_for("transmission")}}">Transactions</a>
+  <div class="dropdown">
+    <button class="dropbtn">Configurations
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{{url_for("customer")}} ">Customers </a>
+      <a href="#">Orders    </a>
+      <a href="#">Setting   </a>
+    </div>
+  </div> 
+</div>
+
+
+<div class="price">
+<h4> FILE UPLOAD SECTION </br> Only Image Files Can Be Uploaded  </h4>
+</div>
+<h3 class="sep">Beef Uploads </h3>
+<form action="{{url_for("upload_beef")}}" method="POST" enctype="multipart/form-data">
+  <input type="file" id="myFile" name="file">
+  <input  class="sbt" type="submit">
+</form>
+
+<h3 class="sep"> Chicken Upload </h3>
+
+<form action="{{url_for("upload_chick")}}" method="POST" enctype="multipart/form-data">
+  <input type="file" id="myFile" name="xfile">
+  <input class="sbt" type="submit">
+</form>
+<div class="stunt" style="display:stack">
+<h3 class="sep"> Sheep Upload </h3>
+<form action="{{url_for("upload_sheep")}}" method="POST" enctype="multipart/form-data">
+  <input  type="file" id="myFile" name="yfile">
+  <input type="submit" class="sbt">
+</form>
+
+<h4 class="sep"> Pigs Upload </h4>
+<form action="{{url_for("upload_pig")}}" method="POST" enctype="multipart/form-data"">
+  <input  type="file" id="myFile" name="zfile">
+  <input  class="sbt" type="submit">
+</form>
+</div>
+
+
+<div class="price">
+<h3 style="font-size:20px" > Kylenath Price Tuning </h3>
+</div>
+<form class="form-inline" action="{{url_for("home")}}" , method='POST'>
+  <label for="email">Pig</label>
+  <input type="number" id="email" placeholder="Enter Pig Price" name="pig">
+  <label for="pwd">Chicken:</label>
+  <input type="number" id="pwd" placeholder="Enter Chicken Price" name="chicken">
+   <label for="pwd">Sheep:</label>
+  <input type="number" id="pwd" placeholder="Enter Sheep Price" name="sheep">
+   <label for="pwd">Beef:</label>
+     <input type="number" id="pwd" placeholder="Enter Beef Price " name="Beef">
+  <button type="submit">Submit</button>
+
+</form>
+
+<div class="admin">
+<h2 style="font-size:20px"> Security Setup Page </h2>
+</div>
+<form class="form-inline" action="{{url_for("home")}}" , method='POST'>
+  <label for="email">Email:</label>
+  <input type="email" id="email" placeholder="Enter email" name="username">
+  <label for="email">Username</label>
+  <input type="textbox" id="Username" placeholder="Enter New Username" name="username">
+  <label for="pwd">Password:</label>
+    <input type="password" id="pwd" placeholder="Enter New password" name="admpass">
+<label for="email">Confirm Password </label>
+  <input type="password" id="pwd" placeholder="Confirm password" name="cnfpass">
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+

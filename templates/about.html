@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1 style="color:dodgerblue">Kylenath Enterprises </h1>
+  <h1 style="color:orange">About Us </h1>
+  <p style=" color:orange"> Kylenath Enterprises Is A Private Limited Company (PLC) established in 2018 and has been operating till today .</br>
+ It was Originally Located in Kisumu Town , But in 2020 the company was shifted to Rabuor  (Along the Kiusumu -Nairobi Road )
+</br> We Offer you lots of  services i.e <br> mainly dealing with perishable foods specifically Meat Or Animal Sales .</p>
+<ol  style="color:dodgerblue">
+  <li> Beef Meet Sales </li>
+  <li> Chicken Meat Sales  </li>
+  <li> Pork Meat Sales  </li>
+  <li> Mutton Meat Sales </li>
+
+</ol>
+<p style="color:orange">
+Apart From The Listed Animals , We also have other breeds that may surface to the site </br>
+We are effortlessly working to make that possible , where we will include newer breeds and animals . </br>
+Animal related products will also be made available i.e
+<ol style="color:dodgerblue">
+  <li> Eggs </li>
+  <li> Pork Fat </li>
+</ol>
+</p>
+
+</div>
+
+<h2 style="text-align:center; color:orange"><b> The Kylenath Enterprise  Team </b></h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="owner.jpg" alt="CEO" style="width:100%">
+      <div class="container">
+        <h2>Phidale Majiwa Ouma </h2>
+        <p class="title">CEO & Founder</p>
+        <p class="title">[EMAIL] : ekylenath@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="attendant1.jpg" alt="overseer" style="width:100%">
+      <div class="container">
+        <h2>Odhiambo Javis</h2>
+        <p class="title">Farm Attendant</p>
+        <p class="title">[Role] : Oversight </p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="attendant2.jpg" alt="management" style="width:100%">
+      <div class="container">
+        <h2>David Amanga</h2>
+        <p class="title">Designer</p>
+        <p class="title"> Overall Management </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
