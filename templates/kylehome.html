@@ -127,7 +127,7 @@ border-left: 50px solid orange;
   padding: 20px;
   max-height:auto;
   overflow:hidden;
-  background-color:#474e5d;
+  background-color:whitesmoke;
   border-radius:5%;
   overflow:hidden;
 
@@ -212,72 +212,25 @@ border-left: 50px solid orange;
 
 /* Image Gallery */
 
-
-.row > .column {
-  padding: 0 8px;
+* {
+  box-sizing: border-box;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+img {
+  vertical-align: middle;
 }
 
-.column {
-  float: left;
-  width:50%;
-  height:auto;
-  overflow:hidden;
-
-}
-
-/* The Modal (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color:white;
-  opacity:30;
-}
-
-/* Modal Content */
-.modal-content {
+/* Position the image container (needed to position the left and right arrows) */
+.container {
   position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
-
 }
 
-/* The Close Button */
-.close {
-  color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #999;
-  text-decoration: none;
-  cursor: pointer;
-}
-
+/* Hide the images by default */
 .mySlides {
   display: none;
 }
 
+/* Add a pointer when hovering over the thumbnail images */
 .cursor {
   cursor: pointer;
 }
@@ -287,14 +240,13 @@ border-left: 50px solid orange;
 .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 40%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
   color: white;
   font-weight: bold;
   font-size: 20px;
-  transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
@@ -321,17 +273,27 @@ border-left: 50px solid orange;
   top: 0;
 }
 
-img {
-  margin-bottom: -4px;
-}
-
+/* Container for image text */
 .caption-container {
   text-align: center;
-  background-color: black;
+  background-color: #222;
   padding: 2px 16px;
   color: white;
 }
 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
 .demo {
   opacity: 0.6;
 }
@@ -340,15 +302,6 @@ img {
 .demo:hover {
   opacity: 1;
 }
-
-img.hover-shadow {
-  transition: 0.3s;
-}
-
-.hover-shadow:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 
 /* End  Of Image Gallery */
 
@@ -566,12 +519,14 @@ tr:nth-child(even){background-color:whitesmoke}
 float:left;
 border-radius:10%;
 border:3px solid white ;
+width:100%;
 }
 
 .porkwrap{
 float:right;
 border-radius:10%;
 border:3px solid white;
+width:100%;
 }
 
 .btmlink {
@@ -739,6 +694,18 @@ font-size:40px;
     <p class="stylock" style="font-size:18px"> All of our products are health certified and genuinly bear stamp to ensure a clean , healthy and non - contaminated meat supply
     We sell both live and slaughtered products with respect to customers orders . Orders once activated can be collected within 24-48 hrs </br>  Depending on the region of purchase . Closer Regions will experience faster ddrio </p>
       <h2 class="stylock">KYLENATH CHICKEN PRODUCTION SITE </h2>
+           <div class="clearfix">
+       <img class="zshi" src="{{url_for('static' , filename="chicken.gif")}}" style="height:280px;">
+       <p class="shift">
+      &nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  , </br> &nbsp &nbsp Retrieved From the Best chosen Animals  We are confident that youll love it .&nbsp &nbsp In addition , Our Meat is also Health insured and bears the Regional Stamp Of Health Board And Regulations </br> &nbsp &nbsp  For More Info On this Product Click the link Below
+
+      </p>
+     <i id="magic" class="fa fa-shopping-cart"></i>
+     <i id="magic2" class="fa fa-info" ></i>
+      </br>
+      </br>
+
+    </div>
       <h5 class="stylock" >CHICKEN BREEDS  </h5>
 
       <ol  class="stylock" style="font-size:18px; text-align:left">
@@ -748,99 +715,45 @@ font-size:40px;
         <h5 class="stylock">CHICKEN PRODUCTS</h5>
     <div style="overflow-x:auto;">
     </div>
-
-
       <div class="fakeimg" style="overflow:scroll">
-      <div class="row">
-  <div class="column" >
-    <img style="official" src="{{url_for('static' , filename='images/chicken/' + 'chick1.jpg')}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-  </div>
-    <div class="column">
-    <img style="official" src="{{url_for('static' , filename='images/chicken/' + 'cd.jpg')}}" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-  </div>
-  <div class="column">
 
+     <div class="container">
+  {% for image_name in image_name %}
+  <div class="mySlides">
+    <div class="numbertext">iamge_count - defactor/ image_count </div>
+    <img src="{{url_for('static' , filename='images/chicken/' + image_name )}}" style="width:100%">
   </div>
-
-</div>
-
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-{% for image_name in image_name %}
-    <div class="mySlides">
-      <div class="numbertext">{{image_count -defactor }} / 4</div>
-      <img src="{{url_for('static' , filename='images/chicken/' + image_name )}}" style="width:100%">
-    </div>
 {% endfor %}
 
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
 
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
 
-    <div class="caption-container">
-      <p id="caption"></p>
+    <div class="row">
+    {% for image_name in image_name %}
+    <div class="column">
+      <img class="demo cursor" src="{{url_for('static' , filename='images/chicken/' + image_name )}}"  style="width:100%" onclick="currentSlide({{image_count - defactor }})" alt="Loading">
     </div>
+    {% endfor %}
+
+
   </div>
 </div>
+     </div>
 
-      </div>
-      <div class="clearfix">
-
-
-      <p class="shift">
-      <img class="zshi" src="{{url_for('static' , filename="chicken.gif")}}" style="height:280px; width:45% ;">&nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  , </br> &nbsp &nbsp Retrieved From the Best chosen Animals  We are confident that youll love it .&nbsp &nbsp In addition , Our Meat is also Health insured and bears the Regional Stamp Of Health Board And Regulations </br> &nbsp &nbsp  For More Info On this Product Click the link Below
-
-      </p>
-     <i id="magic" class="fa fa-shopping-cart"></i>
-     <i id="magic2" class="fa fa-info" ></i>
-      </br>
-      </br>
-
-
-    </div>
     </div>
     <div id="pork">
       <h2 class="stylock"  > KYLENATH PORK </h2>
       <h5 class="stylock" >Pork Products </h5>
-      <div class="fakeimg" style="overflow:scroll">
-      <div class="row">
-  <div class="column">
-    <img style="official" src="{{url_for('static' , filename='images/pigs/' + 'pig.jpg')}}" onclick="xopenModal();currentSlide(1)" class="hover-shadow cursor">
-  </div>
-    <div class="column">
-    <img style="official" src="{{url_for('static' , filename='images/pigs/' + 'pig1.jpg')}}" onclick="xopenModal();currentSlide(1)" class="hover-shadow cursor">
-  </div>
-
-</div>
-      </div>
-      <div id="xModal" class="modal">
-  <span class="close cursor" onclick="xcloseModal()">&times;</span>
-  <div class="modal-content">
-{% for pig_image in pig_image %}
-    <div class="mySlides">
-      <div class="numbertext">{{pig_count - defactor }} / 4</div>
-      <img src="{{url_for('static' , filename='images/pigs/' + pig_image )}}" style="width:100%">
-    </div>
-{% endfor %}
-
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-
-
-  </div>
-</div>
-      <div class="clearfix">
+       <div class="clearfix">
       </br>
       </br>
        <h3> &nbsp &nbsp Pork Products </h3>
        <p>
-      <img class="porkwrap" src="{{url_for('static' , filename="piganime.gif")}}" style="height:280px; width:45% ;">&nbsp &nbsp We at {{ webtitle }}  also focus on Pork production at a large scale level ,&nbsp From Live Animal Sells To Desired Meat CHops We Got You Covered <br>  &nbsp &nbsp Currently Available Breeds Have Been Listed Below  </br>
+      <img class="porkwrap" src="{{url_for('static' , filename="piganime.gif")}}" style="height:280px; ">&nbsp &nbsp We at {{ webtitle }}  also focus on Pork production at a large scale level ,&nbsp From Live Animal Sells To Desired Meat CHops We Got You Covered <br>  &nbsp &nbsp Currently Available Breeds Have Been Listed Below  </br>
       <ol>
       <li> Large Duroc White </li>
       <li> Berkshire </li>
@@ -850,7 +763,39 @@ font-size:40px;
       <p>
       <i id="magic" class="fa fa-shopping-cart"><a href="{{url_for("order")}}" > </a> </i>
      <i id="magic"  class="fa fa-info"  ></i>
-     </br>
+
+    </div>
+      <div class="fakeimg" style="overflow:scroll">
+
+     <div class="container">
+  {% for pig_image in pig_image %}
+  <div class="mySlides">
+    <div class="numbertext">pig_count - defactor/ pig_count </div>
+    <img src="{{url_for('static' , filename='images/pigs/' + pig_image )}}" style="width:100%">
+  </div>
+{% endfor %}
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+    <div class="row">
+    {% for pig_image in pig_image %}
+    <div class="column">
+      <img class="demo cursor" src="{{url_for('static' , filename='images/pigs/' + pig_image )}}"  style="width:100%" onclick="currentSlide({{pig_count - defactor }})" alt="Loading ....">
+    </div>
+    {% endfor %}
+
+
+
+      </div>
+
+  </div>
+</div>
+</br>
      </p>
      </br>
       <h3 class="stylock" style="text-align:center ; color:orange "> <b> Next Page </b> </h3>
@@ -859,7 +804,7 @@ font-size:40px;
       </br>
       </br>
       </p>
-    </div>
+
     </div>
   </div>
 
@@ -1004,27 +949,34 @@ function weightConverter(valNum) {
   document.getElementById("scaleout").innerHTML=valNum*400 + "/=";
 }
 
-var slideIndex = 0;
-showSlides();
+var slideIndex = 1;
+showSlides(slideIndex);
 
-function showSlides() {
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+      slides[i].style.display = "none";
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+      dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  captionText.innerHTML = dots[slideIndex-1].alt;
 }
-
-
 function smile() {
   var a;
   a = document.getElementById("div1");
