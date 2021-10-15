@@ -10,15 +10,15 @@ import geocoder
 from flask import Flask  , url_for , render_template , request
 import os , random , string 
 from werkzeug.utils import secure_filename
-from flask_mail import Mail
+from flask_mail import Mail , Message
 
 app=Flask(__name__)
 
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] ="ahoyaclyde@gmail.com"
-app.config['MAIL_PASSWORD'] ="blackathlon"
+app.config['MAIL_USERNAME'] ="ekylenath@gmail.com"
+app.config['MAIL_PASSWORD'] ="knathfarm254"
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -47,7 +47,7 @@ def get_time():
     return now_stamp
 
 
-@app.route("/")
+@app.route("/home")
 def home():
     timestamp=get_time()
     with open("webid.txt", "r") as web_block :
@@ -240,11 +240,12 @@ def process():
       
      print(storeback)
      
+      #Sending The Order Email
+     mailer="/mailorder"
+     msg = Message('[KYLENATH ENTERPRISES ORDER]', sender = 'ekylenath@gmail.com', recipients = [useremail ])
+     msg.html = render_template(mailer + ".html" , userid=userid,   useremail=useremail, order_quantity=order_quantity , order_location=order_location , order_product=order_product , phonenumber=phonenumber , product=product, chops=chops , breed=breed , order_id=order_id )
+     mail.send(msg)
 
-     msg=Message('[kylenath Order ] \n [Your Order Has Been Posted , Please Wait For Confirmation ! ',  sender = 'ekylenath@gmail.com', recipients = [useremail])
-     msg.html = render_template("signmail.html"  )
-     Mail.send(msg)
-    
      return render_template("kylehome.html")
    
 @app.route("/adduser" , methods=["POST", "GET"])
@@ -258,7 +259,12 @@ def adduser():
     current_password=request.form.get("key")
     contact=request.form.get("phone")
 
-
+    mailer="/signcnf.html"
+    msg=Message('[***- KYLENATH REGISTRATION MAIL -***] ', sender = 'ekylenath@gmail.com', recipients = [current_mail])
+    msg.html = render_template(mailer , firstname=firstname , lastname=lastname , current_username=current_username   )
+    mail.send(msg)
+    
+    
     filename= os.path.join(app.static_folder , "") + current_username + ".txt"
     with open(filename , "w")as object:
          for data in datastore.values():
