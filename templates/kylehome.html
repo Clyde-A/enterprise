@@ -108,6 +108,7 @@ border-left: 50px solid orange;
   width: 75%;
   font-family:'Architects Daughter';
   font-size:18px;
+
 }
 
 /* Right column */
@@ -163,6 +164,7 @@ border-left: 50px solid orange;
   background-color:#f1f1f1;
   padding: 20px;
   margin-top: 20px;
+
 }
 
 
@@ -173,7 +175,7 @@ border-left: 50px solid orange;
   margin-top: 20px;
   font-family:'Architects Daughter';
   font-size:18px ;
-
+  background-image:url({{url_for('static' , filename="farmbk.jpg")}})
 }
 
 /* Clear floats after the columns */
@@ -188,6 +190,7 @@ border-left: 50px solid orange;
   color:#474e5d;
   font-family:'Architects Daughter';
   font-size:18px ;
+
   }
 
 
@@ -369,8 +372,11 @@ color:black;
 
 
 .iconics {
-
 margin-left:40%;
+font-size:100px;
+height:80px;
+color:orange;
+
 }
 
 #div1 {
@@ -663,8 +669,8 @@ font-size:40px;
 
 
 <div class="navbar">
-  <a href="#home" style="float:right"><i class="fa fa-sign-in" style="font-size:28px"></i> Register  </a>
-  <a href="#news" style="float:right"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Log in  </a>
+  <a href="{{url_for("register")}}" style="float:right"><i class="fa fa-sign-in" style="font-size:28px"></i> Register  </a>
+  <a href="{{url_for("register")}}"  style="float:right"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Log in  </a>
    <a href="{{url_for("order")}}" style="float:right"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>Buy Products </a>
   <div class="dropdown" style="float:left"  >
     <button class="dropbtn">Products
@@ -682,37 +688,48 @@ font-size:40px;
 
 <div class="row">
   <div class="leftcolumn">
-    <div id="chicken">
-    <h2 class="stylock">KYLENATH ENTERPRISE </h2>
-    <p class="stylock" style="font-size:18px"> We are a Digitalised Farming Community dealing in a wide range of products mainly listed below </p>
-    <ol class="stylock" style="font-size:18px">
+    <div id="chicken" style="background-repeat:no-repeat; background-size:100% 100% ; background-attachment:fixed; opacity:0.9 ; color:dodgerblue " >
+
+    <div style="background-color:whitesmoke; color:#474e5d" >
+    <h2 class="stylock" style="color:dodgerblue ; background-color:whitesmoke " >KYLENATH ENTERPRISE </h2>
+    <p class="stylock" style="font-size:18px; color:#474e5d; background-color:whitesmoke ; border-radius:10%"> We are a Digitalised Farming Community dealing in a wide range of products mainly listed below </p>
+    <ol class="stylock" style="font-size:20px; color:#474e5d">
     <li> Pork (Pig) </li>
     <li> Chicken </li>
     <li> Mutton(Sheep) </li>
     <li> Beef </li>
     </ol>
-    <p class="stylock" style="font-size:18px"> All of our products are health certified and genuinly bear stamp to ensure a clean , healthy and non - contaminated meat supply
+    <p class="stylock" style="color:#474e5d; font-size:18px ; background-color:whitesmoke">  All of our products are health certified and genuinly bear stamp to ensure a clean , healthy and non - contaminated meat supply
     We sell both live and slaughtered products with respect to customers orders . Orders once activated can be collected within 24-48 hrs </br>  Depending on the region of purchase . Closer Regions will experience faster ddrio </p>
-      <h2 class="stylock">KYLENATH CHICKEN PRODUCTION SITE </h2>
-           <div class="clearfix">
+      <h2 class="stylock" style="color:#474e5d ; background-color:whitesmoke "><b> KYLENATH CHICKEN PRODUCTION SITE </b> </h2>
+          </div>
+          <div class="clearfix">
        <img class="zshi" src="{{url_for('static' , filename="chicken.gif")}}" style="height:280px;">
-       <p class="shift">
-      &nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  , </br> &nbsp &nbsp Retrieved From the Best chosen Animals  We are confident that youll love it .&nbsp &nbsp In addition , Our Meat is also Health insured and bears the Regional Stamp Of Health Board And Regulations </br> &nbsp &nbsp  For More Info On this Product Click the link Below
 
-      </p>
-     <i id="magic" class="fa fa-shopping-cart"></i>
+       <p style="background-color:white; color:#474e5d ; font-size:18px">
+      &nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  , </br> &nbsp &nbsp Retrieved From the Best chosen Animals  We are confident that youll love it .&nbsp &nbsp  </br> In addition , Our Meat is also Health insured and bears the Regional Stamp Of Health Board And Regulations </br> &nbsp &nbsp  For More Info On this Product Click the link Below
+      </b>
+
+          <i id="magic" class="fa fa-shopping-cart"></i>
      <i id="magic2" class="fa fa-info" ></i>
       </br>
+       </br>
       </br>
+      </br>
+      </p>
+
 
     </div>
+    <div style="background-color:white">
       <h5 class="stylock" >CHICKEN BREEDS  </h5>
 
-      <ol  class="stylock" style="font-size:18px; text-align:left">
+      <ol  class="stylock" style="font-size:18px; text-align:left"><b>
       <li> Kienyeji --<i> Traditional Chicken </i> -- </li>
       <li> Improved Kienyeji --<i> Interlocal Chicken </i> --</li>
+      </b>
       </ol>
-        <h5 class="stylock">CHICKEN PRODUCTS</h5>
+        <h5 class="stylock"> <b> CHICKEN PRODUCTS </b> </h5>
+        </div>
     <div style="overflow-x:auto;">
     </div>
       <div class="fakeimg" style="overflow:scroll">
@@ -818,30 +835,30 @@ font-size:40px;
       </div>
       <h4 class="aboutplay"> <a href="{{url_for("about")}}" class="aboutplay"  >  &nbsp &nbsp Visit Our About Page </a></h4>
     </div>
-    <div class="card">
-    <h3 class="aboutplay" style="text-align:center ; color:orange"> Quick Links </h3>
+    <div class="card" style="font-size:50px; background-color:whitesmoke; color:orange;">
+    <h3 class="aboutplay" style="text-align:center ; color:orange; font-size:15px"> Quick Links </h3>
      <a href="{{url_for("finisher")}}">
-      <img class="iconics" src="https://img.icons8.com/ios-glyphs/30/000000/bull.png"/>
+      <img class="iconics" src="https://img.icons8.com/ios-glyphs/30/000000/bull.png" style="color:orange;" />
     </a>
       </br>
       </br>
       </br>
-      <a href="#chicken">
+      <a href="#chicken" style="color:#474e5d; color:#474e5d;" >
       <img class="iconics" src="https://img.icons8.com/metro/30/000000/chicken.png"/>
     </a>
       </br>
       </br>
       </br>
 
-       <a href="{{url_for("finisher")}}">
-      <img class="iconics" src="https://img.icons8.com/ios-filled/50/000000/sheep2.png"/>
+       <a href="{{url_for("finisher")}}" style="text-decoration:none ; color:#474e5d;">
+      <img class="iconics" src="https://img.icons8.com/ios-filled/50/000000/sheep2.png" />
       </a>
       </a>
       </br>
       </br>
       </br>
-        <a href="#pork">
-      <img class="iconics"  src="https://img.icons8.com/android/50/000000/pig.png"/>
+        <a href="#pork" style="color:#474e5d;">
+      <img class="iconics"  src="https://img.icons8.com/android/50/000000/pig.png"  />
     </a>
       </br>
       </br>
