@@ -8,7 +8,7 @@ import folium
 import time
 import geocoder
 from flask import Flask  , url_for , render_template , request
-import os , random , string 
+import os , random , string
 from werkzeug.utils import secure_filename
 from flask_mail import Mail , Message
 
@@ -23,14 +23,14 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
-UPLOAD_FOLDER = os.path.join(app.static_folder , "") + "/images/beef" 
-UPLOAD_FOLDER_1= os.path.join(app.static_folder , "") + "/images/sheep" 
+UPLOAD_FOLDER = os.path.join(app.static_folder , "") + "/images/beef"
+UPLOAD_FOLDER_1= os.path.join(app.static_folder , "") + "/images/sheep"
 UPLOAD_FOLDER_2= os.path.join(app.static_folder , "") + "/images/chicken"
-UPLOAD_FOLDER_3= os.path.join(app.static_folder , "") + "/images/pigs"  
-pig_price=os.path.join(app.static_folder , "") + "/price/pig"
-sheep_price=os.path.join(app.static_folder , "") + "/price/sheep"
-beef_price=os.path.join(app.static_folder , "") + "/price/beef"
-chicken_price=os.path.join(app.static_folder , "") + "/price/chicken"
+UPLOAD_FOLDER_3= os.path.join(app.static_folder , "") + "/images/pigs"
+pig_price=os.path.join(app.static_folder , "") + "/price/pig/"
+sheep_price=os.path.join(app.static_folder , "") + "/price/sheep/"
+beef_price=os.path.join(app.static_folder , "") + "/price/beef/beefprice.txt"
+chicken_price=os.path.join(app.static_folder , "") + "/price/chicken/"
 app.config['pig_price']=pig_price
 app.config['sheep_price']=sheep_price
 app.config['beef_price']=beef_price
@@ -66,7 +66,7 @@ def home():
          image_name=os.listdir(os.path.join(app.static_folder, "images/chicken/"))
          image_count=len(image_name)
          defactor=1
-         
+
     with open("pigserver.txt" , "a") as image:
          pig_image=os.listdir(os.path.join(app.static_folder, "images/pigs/"))
          pig_count=len(pig_image)
@@ -96,11 +96,11 @@ def transmission():
 
 @app.route("/transact", methods=['POST', 'GET'])
 def transact():
-   
+
      transname=str(request.form.get("username"))
      stroke=transname + "_payment.txt"
      transdata=str(request.form.get("usertrs"))
-     transfile=os.path.join(app.static_folder, "" )  + stroke 
+     transfile=os.path.join(app.static_folder, "" )  + stroke
 
      with open (transfile , "w" ) as transit :
          transit.write(transdata)
@@ -116,87 +116,87 @@ def about():
 def admin():
          return render_template("admin.html")
 
-@app.route('/pricepig' , methods=['POST' , 'GET']) 
-def pricepig(): 
-    pig_pr=str(request.form.get("pig")) 
-  
-    pigid="pigprice.txt" 
-    pighandler=os.path.join(app.config[pig_price],pigid ) 
+@app.route('/pricepig' , methods=['POST' , 'GET'])
+def pricepig():
+    pig_pr=str(request.form.get("pig"))
+
+    pigid="pigprice.txt"
+    pighandler=os.path.join(app.static_folder, "") + pigid
     with open(pighandler , "w")as dump:
         dump.writelines(pig_pr)
     return render_template("/home")
-                      
-@app.route('/pricechick' , methods=['POST' , 'GET']) 
-def pricechick(): 
-   
-    chicken_pr=str(request.form.get("chicken") 
-    chickenid="chickenprice.txt"                  
-    chickhandler=os.path.join(app.config[chicken_price],chickenid ) 
+
+@app.route('/pricechick' , methods=['POST' , 'GET'])
+def pricechick():
+
+    chicken_pr=str(request.form.get("chicken"))
+    chickenid="chickenprice.txt"
+    chickhandler=os.path.join(app.static_folder, "") + chickenid
     with open(chickhandler , "w")as dump:
-        dump.writelines(chick_pr)
+        dump.writelines(chicken_pr)
     return render_template("/home")
-                   
-@app.route('/pricesheep' , methods=['POST' , 'GET']) 
-def pricesheep(): 
-   
-    sheep_price=str(request.form.get("sheep"))
-    sheepid="sheepprice.txt" 
-    sheephandler=os.path.join(app.config[sheep_price],sheepid ) 
+
+@app.route('/pricesheep' , methods=['POST' , 'GET'])
+def pricesheep():
+
+    sheep_pr=str(request.form.get("sheep"))
+    sheepid="sheepprice.txt"
+    sheephandler=os.path.join(app.static_folder, "") + sheepid
     with open(sheephandler , "w")as dump:
         dump.writelines(sheep_pr)
-   return render_template("/home")
-                      
-@app.route('/pricebeef' , methods=['POST' , 'GET']) 
-def pricebeef(): 
+    return render_template("/home")
+
+@app.route('/pricebeef' , methods=['POST' , 'GET'])
+def pricebeef():
     beef_pr=str(request.form.get("beef"))
-    beefid="beefprice.txt" 
-    beefhandler=os.path.join(app.config[beef_price],beefid ) 
+    beefid="beefprice.txt"
+    beefhandler=os.path.join(app.static_folder, "") + beefid
     with open(beefhandler , "w")as dump:
         dump.writelines(beef_pr)
-    return render_template("/home")                      
-                      
-                      
-                      
-                     
+    return render_template("/home")
 
-@app.route('/upload_beef' , methods=['POST' , 'GET']) 
+
+
+
+
+@app.route('/upload_beef' , methods=['POST' , 'GET'])
 def upload_beef():
-     
+
        if request.method =='POST':
         file = request.files['file']
        if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-       return render_template("admin.html")     
+       return render_template("admin.html")
 
-        
-@app.route('/upload_chick' , methods=['POST' , 'GET']) 
+
+@app.route('/upload_chick' , methods=['POST' , 'GET'])
 def upload_chick():
         if request.method =='POST':
-        #Chicken Upload 
+        #Chicken Upload
            file = request.files['xfile']
         if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER_2'],filename))
-        #Pig Upload 
-        return render_template("admin.html") 
-        
-@app.route('/upload_pig' , methods=['POST' , 'GET']) 
+        #Pig Upload
+        return render_template("admin.html")
+
+@app.route('/upload_pig' , methods=['POST' , 'GET'])
 def upload_pig():
         file = request.files['zfile']
         if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER_3'],filename))
-        return render_template("admin.html") 
-        
-        #Sheep Upload 
-@app.route('/upload_sheep' , methods=['POST' , 'GET']) 
+        return render_template("admin.html")
+
+        #Sheep Upload
+@app.route('/upload_sheep' , methods=['POST' , 'GET'])
 def upload_sheep():
         file = request.files['yfile']
         if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER_1'],filename))
-        return render_template("admin.html") 
+        return render_template("admin.html")
 
 @app.route("/customer")
 def customer():
@@ -215,19 +215,19 @@ def register():
 @app.route("/login.html")
 def login():
     return render_template("/login.html")
- 
- 
+
+
 @app.route("/identity")
-def identity(): 
-    return render_template("/identity.html")   
-    
+def identity():
+    return render_template("/identity.html")
+
 @app.route("/login.html/" , methods=['POST', 'GET'])
 def login_hub():
             wallmsg="Unknown Login Id , Kindly Register "
             user_feed=str(request.form.get('username'))
             bunker=os.path.join(app.static_folder, "" ) + user_feed + ".txt"
-            ata=open(bunker , 'r').readlines() 
-            data = [ x.strip() for x  in ata]  
+            ata=open(bunker , 'r').readlines()
+            data = [ x.strip() for x  in ata]
             print(data)
             pass_feed=request.form.get('password')
             if((user_feed == "admin")& (pass_feed == "0000")):
@@ -235,14 +235,14 @@ def login_hub():
                 return render_template("/admin.html")
             if( (pass_feed==data[-1])):
                 return render_template("kylehome.html")
-                
+
             return render_template("login.html" , wallmsg=wallmsg)
                 #Test Existence
 
 @app.route("/order")
-def order(): 
+def order():
     return render_template("orderform.html")
-    
+
 
 @app.route("/gen_processing" , methods=["POST", "GET"])
 def process():
@@ -252,12 +252,12 @@ def process():
             result_str = ''.join(random.sample(string.ascii_lowercase, 8))
         return result_str
 
-     def name_return(swap): 
+     def name_return(swap):
         object=swap.index("@")
-        swapper=swap[:object] 
+        swapper=swap[:object]
         return swapper
-        
-        
+
+
      storeback= {}
      storeback = request.form
      useremail=str(request.form.get("email"))
@@ -271,23 +271,23 @@ def process():
      chops=request.form.get("chops")
      breed=request.form.get("breed")
      order_id=rachize()
-     
-     
-     blackbox = os.path.join(app.static_folder, "" ) + orderbox + ".txt" 
+
+
+     blackbox = os.path.join(app.static_folder, "" ) + orderbox + ".txt"
      filehandler = useremail + "_ord_"
-     with open(blackbox, "a") as handlepoint: 
+     with open(blackbox, "a") as handlepoint:
           handlepoint.writelines(filehandler)
           handlepoint.writelines("\n")
-          
-          
-     redbox = os.path.join(app.static_folder, "" ) + filehandler + ".txt" 
+
+
+     redbox = os.path.join(app.static_folder, "" ) + filehandler + ".txt"
      with open(redbox , "w") as bundlepoint:
             for data in storeback.values():
              bundlepoint.writelines(data)
              bundlepoint.writelines("\n")
-      
+
      print(storeback)
-     
+
       #Sending The Order Email
      mailer="/mailorder"
      msg = Message('[KYLENATH ENTERPRISES ORDER]', sender = 'ekylenath@gmail.com', recipients = [useremail ])
@@ -295,7 +295,7 @@ def process():
      mail.send(msg)
 
      return render_template("kylehome.html")
-   
+
 @app.route("/adduser" , methods=["POST", "GET"])
 def adduser():
     datastore={}
@@ -311,8 +311,8 @@ def adduser():
     msg=Message('[***- KYLENATH REGISTRATION MAIL -***] ', sender = 'ekylenath@gmail.com', recipients = [current_mail])
     msg.html = render_template(mailer , firstname=firstname , lastname=lastname , current_username=current_username   )
     mail.send(msg)
-    
-    
+
+
     filename= os.path.join(app.static_folder , "") + current_username + ".txt"
     with open(filename , "w")as object:
          for data in datastore.values():
