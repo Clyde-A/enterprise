@@ -27,6 +27,14 @@ UPLOAD_FOLDER = os.path.join(app.static_folder , "") + "/images/beef"
 UPLOAD_FOLDER_1= os.path.join(app.static_folder , "") + "/images/sheep" 
 UPLOAD_FOLDER_2= os.path.join(app.static_folder , "") + "/images/chicken"
 UPLOAD_FOLDER_3= os.path.join(app.static_folder , "") + "/images/pigs"  
+pig_price=os.path.join(app.static_folder , "") + "/price/pig"
+sheep_price=os.path.join(app.static_folder , "") + "/price/sheep"
+beef_price=os.path.join(app.static_folder , "") + "/price/beef"
+chicken_price=os.path.join(app.static_folder , "") + "/price/chicken"
+app.config['pig_price']=pig_price
+app.config['sheep_price']=sheep_price
+app.config['beef_price']=beef_price
+app.config['chicken_price']=chicken_price
 app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_1']=UPLOAD_FOLDER_1
 app.config['UPLOAD_FOLDER_2']=UPLOAD_FOLDER_2
@@ -108,8 +116,48 @@ def about():
 def admin():
          return render_template("admin.html")
 
-
-
+@app.route('/pricepig' , methods=['POST' , 'GET']) 
+def pricepig(): 
+    pig_pr=str(request.form.get("pig")) 
+  
+    pigid="pigprice.txt" 
+    pighandler=os.path.join(app.config[pig_price],pigid ) 
+    with open(pighandler , "w")as dump:
+        dump.writelines(pig_pr)
+    return render_template("/home")
+                      
+@app.route('/pricechick' , methods=['POST' , 'GET']) 
+def pricechick(): 
+   
+    chicken_pr=str(request.form.get("chicken") 
+    chickenid="chickenprice.txt"                  
+    chickhandler=os.path.join(app.config[chicken_price],chickenid ) 
+    with open(chickhandler , "w")as dump:
+        dump.writelines(chick_pr)
+    return render_template("/home")
+                   
+@app.route('/pricesheep' , methods=['POST' , 'GET']) 
+def pricesheep(): 
+   
+    sheep_price=str(request.form.get("sheep"))
+    sheepid="sheepprice.txt" 
+    sheephandler=os.path.join(app.config[sheep_price],sheepid ) 
+    with open(sheephandler , "w")as dump:
+        dump.writelines(sheep_pr)
+   return render_template("/home")
+                      
+@app.route('/pricebeef' , methods=['POST' , 'GET']) 
+def pricebeef(): 
+    beef_pr=str(request.form.get("beef"))
+    beefid="beefprice.txt" 
+    beefhandler=os.path.join(app.config[beef_price],beefid ) 
+    with open(beefhandler , "w")as dump:
+        dump.writelines(beef_pr)
+    return render_template("/home")                      
+                      
+                      
+                      
+                     
 
 @app.route('/upload_beef' , methods=['POST' , 'GET']) 
 def upload_beef():
