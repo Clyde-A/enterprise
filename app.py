@@ -17,7 +17,7 @@ app=Flask(__name__)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] ="kylefarms@kylefarms.herokuapp.com@gmail.com"
+app.config['MAIL_USERNAME'] ="ekylenath@gmail.com"
 app.config['MAIL_PASSWORD'] ="knathfarm254"
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -290,7 +290,7 @@ def process():
 
       #Sending The Order Email
      mailer="/mailorder"
-     msg = Message('[KYLENATH ENTERPRISES ORDER]', sender = "kylefarms@kylefarms.herokuapp.com@gmail.com", recipients = [useremail ])
+     msg = Message('[KYLENATH ENTERPRISES ORDER]', sender = "ekylenath@gmail.com", recipients = [useremail ])
      msg.html = render_template(mailer + ".html" , userid=userid,   useremail=useremail, order_quantity=order_quantity , order_location=order_location , order_product=order_product , phonenumber=phonenumber , product=product, chops=chops , breed=breed , order_id=order_id )
      mail.send(msg)
 
@@ -308,7 +308,7 @@ def adduser():
     contact=request.form.get("phone")
 
     mailer="/signcnf.html"
-    msg=Message('[***- KYLENATH REGISTRATION MAIL -***] ', sender = "kylefarms@kylefarms.herokuapp.com@gmail.com", recipients = [current_mail])
+    msg=Message('[***- KYLENATH REGISTRATION MAIL -***] ', sender = "ekylenath@gmail.com", recipients = [current_mail])
     msg.html = render_template(mailer , firstname=firstname , lastname=lastname , current_username=current_username   )
     mail.send(msg)
 
