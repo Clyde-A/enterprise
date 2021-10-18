@@ -47,7 +47,7 @@ def get_time():
     return now_stamp
 
 
-@app.route("/home")
+@app.route("/")
 def home():
     timestamp=get_time()
     with open("webid.txt", "r") as web_block :
