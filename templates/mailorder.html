@@ -1,0 +1,112 @@
+
+    <html>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <head>
+    <style>
+    .boxorder{
+    background-color:#4745ed;
+    height:auto;
+    width:100% ;
+    color:white;
+
+    }
+
+    .drop{
+    background-color:white;
+    border:3px solid white ;
+    width:90%;
+    color:dodgerblue;
+    margin-left:15px;
+    text-align:center;
+    padding:3px;
+    }
+
+
+    .usericon{
+    height:200px;
+    width:250px;
+    justify-content:center;
+    margin-left:40%;
+    margin-right:25%;
+    border-radius:100%;
+    }
+
+    .container1{
+    border:2px solid white ;
+    width:100%;
+    border-radius:5%;
+    }
+
+    .payinfo{
+    height:20px;
+    width:25%;
+    }
+
+    .longrange{
+    display:grid;
+    }
+
+    .fin{
+    color:orange;
+    background-color:#4745ed;
+    width:100%;
+    padding:3px;
+    }
+    </style>
+     </head>
+    <div class="boxorder">
+    </br>
+    </br>
+    <h3 style="text-align:center; background-color:inherit; color:white ; ; width:inhrerit"> KYLENATH ENTERPRISES  </h3>
+    <img class="usericon" src="https://png.pngtree.com/png-vector/20190626/ourlarge/pngtree-avatarbusinesshumanmanpersonprofileuser-blue-dotted-png-image_1494585.jpg" >
+  <div class="container1">
+    <p class="drop"  > KYLENATH PURCHASE ORDER </p>
+    <p> ******* For [ {{ userid }}] *******  </p>
+    </h1>
+
+    <body>
+
+<h2 style="font-family:aria; font-size:18px; color:orange" ><b>  Purchaser   &nbsp : &nbsp  [ {{ userid  }} ] <br>  Product Id  &nbsp : &nbsp &nbsp [{{ order_id }}]<br> </b> [Product Name]  &nbsp :  &nbsp [{{ order_product }} ]<br> </h2>
+</div>
+<p style="text-align:center; font-size:18px"> <b>
+<br>
+<p  style=" color:white; font-size:20px ; text-align:center"><i> <u> ORDER STATUS AND INFORMATION </u> </i> <br>  <br>
+<ul style="color:orange;  text-align:center">
+<div class="longrange">
+<label style=" color:white ;text-align:left; text-align:center  ">  Customer Phone Information  --</label> <p> {{ phonenumber}}</p> </br>
+<label style="color:white ;text-align:center">  Selected Pickup Location   </label> <p> {{ order_location }}</p>
+<label style="color:white;text-align:center">  Product Name  : </label> <p> {{ order_product }} </p>
+<label style="color:white ;text-align:center">  Quantity : </label> <p> {{ order_quantity}} </p>
+<label style="color:white ;text-align:center">  Nature Of Delivery </label>  <p> {{status}} </p>
+<label style="color:white ;text-align:center">  Total Amount Of Products </label>  <p> {{ price }}  </p>
+</div>
+<label style="background-color:white; color:dodgerblue ;text-align:center"> Payments  </label> &nbsp &nbsp
+<select class="payinfo"> Payment Mode
+<option> Pay Now </option>
+<option> Pay Later </option>
+</ul>
+
+</select>
+</br>
+</br>
+</br>
+</div>
+<div class="fin" style="float:left; border:3px solid white">
+<p style="color:orange" >   [  {{ username }} ]  </P>
+<p style="color:orange" > Note : To Activate Your Order </p>
+<ul style="color:orange; " >
+<li><a style="text-decoration:none; color:white" href=""> Kindly Pay The Amount Due Using this Link </a> </li>
+</ul>
+<p  style="color:orange" > For Pay After Delivery , Please Place a Call to the line below to act as proof , <a style="text-decoration:none; color:white" href="" > Link To Call </a>  </p>
+</b>
+</p>
+
+ <p style="text-align:center; font-size:20px; color:white"> <b>  Kylenath Enterprises , Your Online Meat Shop </b></p>
+ </br>
+    </div>
+    </br>
+
+    </body>
+    </html>
