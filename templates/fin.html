@@ -91,34 +91,42 @@ color:dodgerblue;
 
 .infoma{
 
-color:white;
+color:black;
 text-align:center;
 }
 
 table, th, td {
   border: 1px solid white;
-  background-color:orange;
+  background-color:#474e5d;
   padding:2px ;
 }
 
 table {
   width: 100%;
   background-color:#FDF5E6;
-  color:white;
+  color:orange;
 }
 
 .drag{
+background-color:dodgerblue;
+text-align:center;
+float:left ;
+width:100%;
+border:3px solid #474e5d;
+color:white;
+}
+
+.drag2{
 background-color:#474e5d;
 text-align:center;
 float:left ;
 width:100%;
-border:3px solid orange;
+border:3px solid #474e5d;
+background-image:url({{url_for('static' , filename="shippk.gif")}})
 }
 
-
-
 .balance{
-color:white;
+color:black;
 font-size:28px;
 }
 
@@ -150,6 +158,13 @@ color:whitesmoke    ;
 background-color:#474e5d;
 }
 
+
+
+
+
+
+
+
 #scaleout{
 height:20px ;
 width:100% ;
@@ -166,14 +181,14 @@ background-color:#80ced6;
 
 #scalekey{
 height:40px ;
-width:20%;
-border:2px dashed white ;
+width:40%;
+border:2px dashed orange ;
 }
 
 #scalekey2{
 height:40px ;
-width:20%;
-border:2px dashed white ;
+width:40%;
+border:2px dashed orange ;
 }
 
 .shapist{
@@ -239,24 +254,24 @@ color:orange;
 background-color:#474e5d;
 }
 
-#Home {background-color:#FDF5E6; text-align:center}
-#News {background-color: #FDF5E6;}
+
+#Home {background-color:#FDF5E6; text-align:center ;}
+#News {background-color: #FDF5E6;  }
 #About {background-color:white;}
 </style>
 </head>
 <body>
-
 <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen" >Beef</button>
 <button class="tablink" onclick="openPage('News', this, 'green')" >Sheep</button>
 
 
 <div id="Home" class="tabcontent">
-<div class="drag" >
+<div class="drag"  >
 <img class="resp" src="{{url_for('static' , filename="section.jpg") }}"  style="float:right; height:300px; width:50%  " >
   <h3 class="balance"><i class="fa fa-balance-scale" style="font-size:40px;""></i> </h3>
-  <label style="color:white "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
+  <label style="color:black "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
   </br>
-  <input id="scalekey" style=" color:white;" type="number" placeholder="Enter Desired Number Of Kilograms " oninput="weightConverter(this.value)" onchange="weightConverter(this.value)">
+  <input id="scalekey" style=" color:white;" type="number" placeholder="Enter Kilograms " oninput="weightConverter(this.value)" onchange="weightConverter(this.value)">
 </p>
 <p>Unit Price : <span id="scaleout"></span></p>
 </br>
@@ -268,9 +283,8 @@ background-color:#474e5d;
 <img  class="shapist" src="{{url_for('static' , filename='images/beef/' + product)}}" style="width:100%" >
 <div class="container">
 <a href="{{url_for("order")}}"><i id="magic" class="fa fa-shopping-cart"></i></a>&nbsp &nbsp
-<a href="www.google.com"  onclick=myFunction()  ><i id="magic" class="fa fa-heart" ></i></a>&nbsp &nbsp
 <a href="{{url_for("identity")}}"><i id="magic" class="fa fa-info" ></i></a>&nbsp &nbsp
-<a href="www.google.com"><i id="magic" class="fa fa-edit" style="font-size:24px; overflow:hidden ; float:right ; color:red "></i></a>
+
   </div>
 </div>
 
@@ -278,8 +292,8 @@ background-color:#474e5d;
 </div>
 
 <div id="News" class="tabcontent"  >
-<div class="drag">
-<h2 style="color:white" >  <b> KYLENATH SHEEP FARM </b> </h2>
+<div class="drag2" >
+<h2 style="color:black" >  <b> KYLENATH SHEEP FARM </b> </h2>
 <h3 class="infoma"> <b> <i>Available Sheep Breeds </i> </b> </h3>
 
 <table>
@@ -297,9 +311,9 @@ background-color:#474e5d;
   </tr>
 </table>
  <h3 class="balance"><i class="fa fa-balance-scale" style="font-size:40px;""></i> </h3>
-  <label style="color:white "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
+  <label style="color:black "></br><b><i> Kilogram Purchase Box  &nbsp </i></b></label>
   </br>
-  <input id="scalekey2" style=" color:white;" type="number" placeholder="Enter Desired Number Of Kilograms " oninput="weightConverter2(this.value)" onchange="weightConverter2(this.value)">
+  <input id="scalekey2" style=" color:black;" type="number" placeholder="Enter Kilograms" oninput="weightConverter2(this.value)" onchange="weightConverter2(this.value)">
 </p>
 <p>Unit Price : <span id="scaleout2"></span></p>
 </br>
@@ -314,9 +328,8 @@ background-color:#474e5d;
 <img class="shapist"  src="{{url_for('static' , filename='images/sheep/' + sh_product)}}" style="width:100%" >
 <div class="container">
 <a href="{{url_for("order")}}"> <i id="magic" class="fa fa-shopping-cart"></i></a> &nbsp &nbsp
-<a href="kdksd" onclick="myfunction()"  > <i id="magic" class="fa fa-heart" ></i> </a>&nbsp &nbsp
 <a href="{{url_for("identity")}}"><i id="magic" class="fa fa-info" ></i></a>&nbsp &nbsp
-<a href="derd" ><i id="magic" class="fa fa-edit" style="font-size:24px; overflow:hidden ; float:right ; color:red "> </i></a>
+
 
   </div>
 </div>
