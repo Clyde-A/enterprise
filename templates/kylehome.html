@@ -53,7 +53,7 @@ body {
 	width: 0;
 	height: 0;
 	border-top: 25px solid transparent;
-	border-left: 50px solid #474e5d  ;
+	border-left: 50px solid red      ;
 	border-bottom: 25px solid transparent;
 	margin-left:50%;
 	position:relative;
@@ -164,9 +164,10 @@ border-left: 50px solid orange;
   background-color:#f1f1f1;
   padding: 20px;
   margin-top: 20px;
+   background-image:url({{url_for('static' , filename="pigpk.jpg")}})
 
 }
-.class{ 
+.class{
 text-align:center;
 	}
 
@@ -177,7 +178,7 @@ text-align:center;
   margin-top: 20px;
   font-family:'Architects Daughter';
   font-size:18px ;
-  background-image:url({{url_for('static' , filename="farmbk.jpg")}})
+  background-image:url({{url_for('static' , filename="chickenpk.jpg")}})
 }
 
 /* Clear floats after the columns */
@@ -376,7 +377,7 @@ color:black;
 .iconics {
 font-size:100px;
 height:250px;
-width:100%; 
+width:100%;
 
 }
 
@@ -570,6 +571,7 @@ background-color:#474e5d;
 float:left;
 margin-left:50px;
 font-size:40px;
+color:dodgerblue;
 }
 
 
@@ -577,6 +579,7 @@ font-size:40px;
 float:right;
 margin-right:50px;
 font-size:40px;
+color:dodgerblue;
 }
 
 
@@ -656,13 +659,13 @@ font-size:40px;
 .dropdown:hover .dropdown-content {
   display: block;
 }
-	
-.see{
-height:200px;
-width:100%;
+
+.cleardent{
+height:130px;
 opacity:1;
+width:fit;
 }
-	
+
 </style>
 </head>
 <body>
@@ -692,10 +695,11 @@ opacity:1;
 </div>
   </div>
 </div>
+
 <div class="row">
   <div class="leftcolumn">
     <div id="chicken" style="background-repeat:no-repeat; background-size:100% 100% ; background-attachment:fixed; opacity:0.9 ; color:dodgerblue " >
-   
+
     <div style="background-color:whitesmoke; color:#474e5d" >
     <h2 class="stylock" style="color:dodgerblue ; background-color:whitesmoke " >KYLENATH ENTERPRISE </h2>
     <p class="stylock" style="font-size:18px; color:#474e5d; background-color:whitesmoke ; border-radius:10%"> We are a Digitalised Farming Community dealing in a wide range of products mainly listed below </p>
@@ -707,42 +711,42 @@ opacity:1;
     </ol>
     <p class="stylock" style="color:#474e5d; font-size:18px ; background-color:whitesmoke">  All of our products are health certified and genuinly bear stamp to ensure a clean , healthy and non - contaminated meat supply
     We sell both live and slaughtered products with respect to customers orders . Orders once activated can be collected within 24-48 hrs </br>  Depending on the region of purchase . Closer Regions will experience faster ddrio </p>
-     
           </div>
-          <div class="clearfix">
-		   <h3 class="stylock" style="color:#474e5d ; background-color:whitesmoke "><b>  CHICKEN PRODUCTION SITE </b> </h3>
+          <div class="cleardent">
+          </div>
+          <div class="clearfix" style="background-color:white">
+          <h4 class="stylock" style="color:dodgerblue ; background-color:whitesmoke "><b> KYLENATH CHICKEN PRODUCTION SITE </b> </h4>
        <img class="zshi" src="{{url_for('static' , filename="chicken.gif")}}" style="height:280px;">
 
-       <p style="background-color:white; color:#474e5d ; font-size:18px">
-      &nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  , 
+       <p style="background-color:white; color:#474e5d ; font-size:15px">
+      &nbsp &nbsp Kylenath Enterprises Offers You A Quick And Reliable Meat (Chicken) Supply  ,
     </br> &nbsp &nbsp Retrieved From the Best chosen Animals  We are confident that youll love it .&nbsp &nbsp  </br>
 	In addition , Our Meat is also Health insured and bears the Regional Stamp Of Health Board And Regulations </br>
-&nbsp &nbsp  
+&nbsp &nbsp
       </b>
-        <h5 class="stylock" >CHICKEN BREEDS  </h5>
- 	<ol  class="stylock" style="font-size:18px; text-align:left"><b>
+      </p>
+      <p style="background-color:white; color:#474e5d ; font-size:15px">
+        <h4 style="text-align:left; color:dodgerblue ">Available Breeds  </h4>
+ 	<ol   style="font-size:15px; text-align:left"><b>
       <li> Kienyeji --<i> Traditional Chicken </i> -- </li>
       <li> Improved Kienyeji --<i> Interlocal Chicken </i> --</li>
       </b>
       </ol>
-</p>
-<p style="background-color:white; color:#474e5d ; font-size:18px">
           <i id="magic" class="fa fa-shopping-cart"><a href="{{url_for("order")}}" > </a></i>
      <i id="magic2" class="fa fa-info" ><a href="{{url_for("identity")}}" > </a></i>
-      </br>
-       </br>
-      </br>
-      </br>
+   </br>
+   </br>
+   </br>
       </p>
 
-</div>
-    <div class="see">
-    </div>
-
+      </div>
+     <div style="width:100%; height:150px ; opacity:1; ">
+     </div>
     <div style="overflow-x:auto;">
     </div>
+
       <div class="fakeimg" style="overflow:scroll">
-      <h5 class="stylock"> <b> CHICKEN PRODUCTS </b> </h5>
+      <h3   style="color:dodgerblue; text-align:center; "> <b>Chicken  </b> </h3>
      <div class="container">
   {% for image_name in image_name %}
   <div class="mySlides">
@@ -768,19 +772,16 @@ opacity:1;
 
   </div>
 </div>
-<div class="see">
- </div>
-
      </div>
-
+        <div class="cleardent">
     </div>
-    <div id="pork">
-      <h2 class="stylock"  > KYLENATH PORK </h2>
-      <h5 class="stylock" >Pork Products </h5>
-       <div class="clearfix">
-      </br>
-      </br>
-       <h3> &nbsp &nbsp Pork Products </h3>
+    </div>
+
+    <div id="pork" style="background-repeat:no-repeat; background-size:100% 100% ; background-attachment:fixed; opacity:0.9 ; color:dodgerblue ">
+         <div class="cleardent">
+    </div>
+     <div class="clearfix">
+       <h3 style="text-align:center; color:dodgerblue;">Pork </h3>
        <p>
       <img class="porkwrap" src="{{url_for('static' , filename="piganime.gif")}}" style="height:280px; ">&nbsp &nbsp We at {{ webtitle }}  also focus on Pork production at a large scale level ,&nbsp From Live Animal Sells To Desired Meat CHops We Got You Covered <br>  &nbsp &nbsp Currently Available Breeds Have Been Listed Below  </br>
       <ol>
@@ -789,10 +790,14 @@ opacity:1;
       <li> Other Breed (On Demand) </li>
       </ol>
     Make An Order ?  For More Info On this Product Click the link Below !
-      <p>
-      <i id="magic" class="fa fa-shopping-cart"><a href="{{url_for("order")}}" > </a> </i>
+     <i id="magic" class="fa fa-shopping-cart"><a href="{{url_for("order")}}" > </a> </i>
      <i id="magic2"  class="fa fa-info" ><a href="{{url_for("identity")}}" > </a></i>
-
+     </br>
+     </br>
+     </br>
+     </br>
+    </div>
+    <div style="height:130px; width100% ; opacity:1;">
     </div>
       <div class="fakeimg" style="overflow:scroll">
 
@@ -827,8 +832,9 @@ opacity:1;
 </br>
      </p>
      </br>
-      <h3 class="stylock" style="text-align:center ; color:orange "> <b> Next Page </b> </h3>
+
       <a href="{{url_for('finisher')}}" > <div class="tri"></div> </a>
+          <h3 class="stylock" style="text-align:center ; color:white; font-size:40px; "> <b> Next </b> </h3>
       </br>
       </br>
       </br>
