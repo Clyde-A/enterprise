@@ -656,6 +656,13 @@ font-size:40px;
 .dropdown:hover .dropdown-content {
   display: block;
 }
+	
+.see{
+height:100px;
+width:100%;
+opacity:1;
+}
+	
 </style>
 </head>
 <body>
@@ -685,7 +692,8 @@ font-size:40px;
 </div>
   </div>
 </div>
-
+<div class="see">
+</div>
 <div class="row">
   <div class="leftcolumn">
     <div id="chicken" style="background-repeat:no-repeat; background-size:100% 100% ; background-attachment:fixed; opacity:0.9 ; color:dodgerblue " >
@@ -701,9 +709,10 @@ font-size:40px;
     </ol>
     <p class="stylock" style="color:#474e5d; font-size:18px ; background-color:whitesmoke">  All of our products are health certified and genuinly bear stamp to ensure a clean , healthy and non - contaminated meat supply
     We sell both live and slaughtered products with respect to customers orders . Orders once activated can be collected within 24-48 hrs </br>  Depending on the region of purchase . Closer Regions will experience faster ddrio </p>
-      <h2 class="stylock" style="color:#474e5d ; background-color:whitesmoke "><b> KYLENATH CHICKEN PRODUCTION SITE </b> </h2>
+     
           </div>
           <div class="clearfix">
+		   <h3 class="stylock" style="color:#474e5d ; background-color:whitesmoke "><b>  CHICKEN PRODUCTION SITE </b> </h3>
        <img class="zshi" src="{{url_for('static' , filename="chicken.gif")}}" style="height:280px;">
 
        <p style="background-color:white; color:#474e5d ; font-size:18px">
@@ -728,7 +737,8 @@ font-size:40px;
       </br>
       </p>
 </div>
-
+    <div class="see">
+    </div>
 
     <div style="overflow-x:auto;">
     </div>
@@ -748,6 +758,8 @@ font-size:40px;
   <div class="caption-container">
     <p id="caption"></p>
   </div>
+ <div class="see">
+    </div>
 
     <div class="row">
     {% for image_name in image_name %}
@@ -759,6 +771,9 @@ font-size:40px;
 
   </div>
 </div>
+<div class="see">
+ </div>
+
      </div>
 
     </div>
